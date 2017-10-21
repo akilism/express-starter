@@ -1,0 +1,44 @@
+{
+  "name": "winner-court-docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "build": "bankai build ./client/index.js && rm -rf ./dist/* && mv ./client/dist/* ./dist",
+    "inspect": "bankai inspect ./client/index.js",
+    "start-dev-fe": "bankai start ./client/index.js --open",
+    "start-dev": "nodemon server.js --config ./nodemon.json",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "choo": "^6.3.0",
+    "concat-stream": "^1.6.0",
+    "cookie": "^0.3.1",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "date-fns": "^1.28.5",
+    "express": "^4.16.1",
+    "express-session": "^1.15.6",
+    "helmet": "^3.8.2",
+    "level": "^1.7.0",
+    "morgan": "^1.9.0",
+    "multer": "^1.3.0",
+    "passport": "^0.4.0",
+    "passport-http": "^0.3.0",
+    "request": "^2.83.0",
+    "sheetify": "^6.2.0",
+    "tachyons": "^4.8.1",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "bankai": "^9.0.0-rc2",
+    "bluebird": "^3.5.1",
+    "choo-devtools": "^1.4.0",
+    "choo-log": "^7.2.1",
+    "nodemon": "^1.12.1"
+  }
+}
