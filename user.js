@@ -11,11 +11,17 @@ const db =
     : level('./db/users');
 
 function read(key) {
-  return db.read(`users~${key}`);
+  return db.read(`users~${key}`).catch(err => {
+    if (err.notFound) {
+      return undefined;
+    }
+
+    throw err;
+  });
 }
 
 function write(key, val) {
-  return db.write(`users~${key}`, value);
+  return db.write(`users~${key}`, JSON.stringify(val));
 }
 
 function deleteUser(key) {
@@ -23,7 +29,9 @@ function deleteUser(key) {
 }
 
 function fetchUser(username) {
-  return read(username);
+  return read(username).then(data => {
+    return JSON.parse(data);
+  });
 }
 
 function userExists(username) {

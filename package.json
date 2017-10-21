@@ -4,8 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build":
-      "bankai build ./client/index.js && rm -rf ./dist/* && mv ./client/dist/* ./dist",
+    "build": "bankai build ./client/index.js && rm -rf ./dist/* && mv ./client/dist/* ./dist",
     "inspect": "bankai inspect ./client/index.js",
     "start-dev-fe": "bankai start ./client/index.js --open",
     "dev": "nodemon server.js --config ./nodemon.json",

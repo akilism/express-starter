@@ -1,21 +1,30 @@
 const usr = require('./user');
 
+function getAcctOpts(accountType) {
+  switch (accountType.toLowerCase()) {
+    case 'admin':
+    case 'administrator':
+      return {
+        type: 'admin'
+      };
+    case 'user':
+    default:
+      return {
+        type: 'user'
+      };
+  }
+}
+
 function main() {
   const command = process.argv[2] || '';
   switch (command.toLowerCase()) {
     case 'newuser':
-      if (
-        process.argv[3] &&
-        process.argv[4] &&
-        process.argv[5] &&
-        process.argv[6]
-      ) {
+      if (process.argv[3] && process.argv[4] && process.argv[5]) {
         usr
           .onNewUser(
             process.argv[3],
             process.argv[4],
-            process.argv[5].toLowerCase() === 'true' ? true : false,
-            process.argv[6].toLowerCase() === 'true' ? true : false
+            getAcctOpts(process.argv[5])
           )
           .then(user => {
             console.log(`🤗  Created User ${process.argv[3]}`);
@@ -25,9 +34,7 @@ function main() {
             console.log(err);
           });
       } else {
-        console.log(
-          'node cli newuser <username> <password> <admin> <commenter>'
-        );
+        console.log('node cli newuser <username> <password> <account_type>');
       }
       break;
     case 'updatepasswd':
