@@ -4,10 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "bankai build ./client/index.js && rm -rf ./dist/* && mv ./client/dist/* ./dist",
+    "build":
+      "bankai build ./client/index.js && rm -rf ./dist/* && mv ./client/dist/* ./dist",
     "inspect": "bankai inspect ./client/index.js",
     "start-dev-fe": "bankai start ./client/index.js --open",
-    "start-dev": "nodemon server.js --config ./nodemon.json",
+    "dev": "nodemon server.js --config ./nodemon.json",
     "start": "NODE_ENV=production node server.js"
   },
   "author": "",
